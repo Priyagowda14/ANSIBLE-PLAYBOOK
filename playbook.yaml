@@ -1,0 +1,29 @@
+---
+- name: my-playbook
+  hosts: all
+  become: true
+  tasks: 
+   - name: creating a directory
+     file:
+        name: ansible-test
+        path: /root/
+        state: directory
+   - name: creating a file 
+     file:
+        path: /root/ansible-test/myfile
+        state: touch
+   - name: adding a content to the file
+     copy: 
+        dest: /root/ansible-test/myfile     
+        content: |
+          hello this is priya my ansible demo testing 
+   
+   - name: copy filr to directory
+     copy:
+       remote_src: yes
+       src: file.xyz
+       dest: /root/ansible-test
+
+
+
+
